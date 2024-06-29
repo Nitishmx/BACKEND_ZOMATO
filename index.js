@@ -22,6 +22,7 @@ let restrurant=require("./routes/Resturant")
 
 
 
+
 app.get("/",(req,res)=>{
     res.send("This is a home route")
 })
@@ -32,6 +33,7 @@ app.get("/",(req,res)=>{
 // route that means middlewear
 app.use("/api",singupRout)
 app.use("/api",loginRout)
+app.use("/api",restrurant)
 app.use("/api",restrurant)
 
 

@@ -5,6 +5,7 @@ let jwt=require("jsonwebtoken")
 let collectionOfSingup=require("../models/Singup")
 loging.post('/loging',async (req,res)=>{
     let {password,email}=req.body;
+    
     let frontData=req.body
     let findDataBaseData= await collectionOfSingup.findOne({email:frontData.email})
     if (!findDataBaseData) {
