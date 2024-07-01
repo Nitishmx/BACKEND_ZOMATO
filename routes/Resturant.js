@@ -14,7 +14,6 @@ resturant.post("/restro",async(req,res)=>{
     }
 })
 
-module.exports=resturant;
 
 
 // all restro findout
@@ -26,7 +25,7 @@ resturant.get("/restro/:id",async (req,res)=>{
             
         }
         else{
-
+            
             return res.send(restrurant)
         }
     } catch (error) {
@@ -35,7 +34,6 @@ resturant.get("/restro/:id",async (req,res)=>{
     }
 })
 
-module.exports=resturant
 
 resturant.get("/restro/:id", async(req,res)=>{
     let resturn=await Restro.findById(req.params.id)
@@ -48,6 +46,42 @@ resturant.get("/restro/:id", async(req,res)=>{
     
 })
 
-module.exports=resturant
+// module.exports=resturant
 
 
+// update resturant
+resturant.patch("/restro/:id",async(req,res)=>{
+    try {
+        let resturant=await Restro.findByIdUpdate(req.params.id,req.body)
+        if (!resturant) {
+            res.send(resturant)
+            
+        }
+        else{
+            return res.send("not found not update")
+        }
+    } catch (error) {
+        console.log("error",error);
+        
+    }
+})
+
+
+// resturant delete
+resturant.delete("/restro/:id", async (req,res)=>{
+    let resturant=await Restro.findByIdAndDelete(req.params.id,{new:true})
+    try {
+        if (!resturant) {
+            res.send("not found")
+            
+        }
+        else{
+            return res.send("delete")
+        }
+    } catch (error) {
+        return res.send("delete")
+        
+    }
+})
+
+module.exports=resturant;
